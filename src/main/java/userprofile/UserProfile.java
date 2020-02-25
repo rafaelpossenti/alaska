@@ -1,4 +1,4 @@
-package user;
+package userprofile;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Getter
 @Setter
-public class User extends BaseEntity {
+public class UserProfile extends BaseEntity {
 
     @NotNull
     @Size(max = 255)
