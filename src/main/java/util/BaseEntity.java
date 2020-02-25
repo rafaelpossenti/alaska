@@ -3,10 +3,7 @@ package util;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -27,4 +24,27 @@ public class BaseEntity implements Serializable {
 
     private LocalDateTime updatedAt;
 
+    /**
+     * Method to handle records before insertions.
+     * <p>
+     * Fields {@link BaseEntity#createdAt} and {@link BaseEntity#updatedAt} always must be created by server before insert.
+     * </p>
+     */
+    @PrePersist
+    public void prePersist() {
+        final LocalDateTime now = LocalDateTime.now();
+        this.createdAt = now;
+        this.updatedAt = now;
+    }
+
+    /**
+     * Method to handle records before updates.
+     * <p>
+     * Field {@link BaseEntity#updatedAt} always must be set by server before any update.
+     * </p>
+     */
+    @PreUpdate
+    public void preUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 }
