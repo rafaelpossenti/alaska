@@ -1,4 +1,4 @@
-package userprofile;
+package com.possenti.alaska.userprofile;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

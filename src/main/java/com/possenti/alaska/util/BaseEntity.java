@@ -1,4 +1,4 @@
-package util;
+package com.possenti.alaska.util;
 
 import lombok.Getter;
 import lombok.Setter;

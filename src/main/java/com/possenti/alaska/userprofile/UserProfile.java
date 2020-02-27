@@ -1,8 +1,8 @@
-package userprofile;
+package com.possenti.alaska.userprofile;
 
 import lombok.Getter;
 import lombok.Setter;
-import util.BaseEntity;
+import com.possenti.alaska.util.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
