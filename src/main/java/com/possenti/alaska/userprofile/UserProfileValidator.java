@@ -25,9 +25,16 @@ public class UserProfileValidator implements Validator {
     public void validate(final Object target, final Errors errors) {
         ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
         UserProfile userProfile = (UserProfile) target;
+
+        this.isDuplicated(userProfile, errors);
+
+    }
+
+    private void isDuplicated(final UserProfile userProfile, final Errors errors) {
         final boolean duplicated = userProfileRepository.findAll().stream().anyMatch(item -> item.getName().equals(userProfile.getName()));
         if (duplicated) {
             errors.rejectValue("name", "register.duplicated");
         }
     }
+
 }
