@@ -20,7 +20,7 @@ public class UserProfileController {
     private UserProfileRepository repository;
 
     @Autowired
-    private UserProfileValidator userProfileValidator;
+    private UserProfileValidator validator;
 
     @GetMapping("/user-profiles")
     List<UserProfile> list() {
@@ -34,6 +34,6 @@ public class UserProfileController {
 
     @InitBinder("userProfile")
     public void setupBinder(WebDataBinder binder) {
-        binder.addValidators(userProfileValidator);
+        binder.addValidators(validator);
     }
 }
