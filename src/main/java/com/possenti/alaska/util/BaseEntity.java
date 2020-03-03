@@ -26,9 +26,8 @@ public class BaseEntity implements Serializable {
 
     /**
      * Method to handle records before insertions.
-     * <p>
+     *
      * Fields {@link BaseEntity#createdAt} and {@link BaseEntity#updatedAt} always must be created by server before insert.
-     * </p>
      */
     @PrePersist
     public void prePersist() {
@@ -39,9 +38,8 @@ public class BaseEntity implements Serializable {
 
     /**
      * Method to handle records before updates.
-     * <p>
+     *
      * Field {@link BaseEntity#updatedAt} always must be set by server before any update.
-     * </p>
      */
     @PreUpdate
     public void preUpdate() {

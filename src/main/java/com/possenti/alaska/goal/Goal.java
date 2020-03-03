@@ -30,8 +30,25 @@ public class Goal extends BaseEntity {
     private Frequency frequency;
 
     @NotNull
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
+
+    @Enumerated(value = EnumType.STRING)
+    private Status status;
+
+    @NotNull
     @ManyToOne
-//    @JoinColumn(name = "goal_type_id", referencedColumnName = "goal_type_id")
-    private GoalType goalType;
+    private GoalType type;
+
+
+    /**
+     * Method to handle records before insertions.
+     *
+     * Fields {@link Goal#status} always must be created by server before insert.
+     */
+    @PrePersist
+    public void prePersist() {
+        this.status = Status.PROGRESS;
+    }
 
 }
