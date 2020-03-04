@@ -13,7 +13,7 @@ import java.util.List;
  * @since 2020-02-25
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/user-profiles")
 public class UserProfileController {
 
     @Autowired
@@ -22,12 +22,12 @@ public class UserProfileController {
     @Autowired
     private UserProfileValidator validator;
 
-    @GetMapping("/user-profiles")
+    @GetMapping
     List<UserProfile> list() {
         return repository.findAll();
     }
 
-    @PostMapping("/user-profiles")
+    @PostMapping
     public void insert(@RequestBody @Valid UserProfile user) {
         this.repository.save(user);
     }
