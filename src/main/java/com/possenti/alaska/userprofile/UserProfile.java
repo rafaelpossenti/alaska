@@ -22,4 +22,5 @@ public class UserProfile extends BaseEntity {
     @Size(max = 255)
     private String name;
 
+    private String image;
 }

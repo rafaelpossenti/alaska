@@ -1,4 +1,4 @@
-package com.possenti.alaska.GoalType;
+package com.possenti.alaska.goaltype;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

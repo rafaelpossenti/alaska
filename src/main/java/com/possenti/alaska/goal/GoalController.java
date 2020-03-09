@@ -17,16 +17,20 @@ import java.util.List;
 @RequestMapping("/goals")
 public class GoalController {
 
+    private final GoalService service;
+
     @Autowired
-    private GoalRepository repository;
+    public GoalController(final GoalService service) {
+        this.service = service;
+    }
 
     @GetMapping
     ResponseEntity<List<Goal>> list() {
-        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(service.list(), HttpStatus.OK);
     }
 
     @PostMapping
     public void insert(@RequestBody @Valid Goal goal) {
-        this.repository.save(goal);
+        this.service.save(goal);
     }
 }

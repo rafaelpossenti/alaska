@@ -1,6 +1,6 @@
 package com.possenti.alaska.goal;
 
-import com.possenti.alaska.GoalType.GoalType;
+import com.possenti.alaska.goaltype.GoalType;
 import com.possenti.alaska.util.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;

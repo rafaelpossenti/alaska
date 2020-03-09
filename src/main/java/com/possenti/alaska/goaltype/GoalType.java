@@ -1,4 +1,4 @@
-package com.possenti.alaska.GoalType;
+package com.possenti.alaska.goaltype;
 
 import com.possenti.alaska.util.BaseEntity;
 import lombok.Getter;
