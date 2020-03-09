@@ -1,4 +1,4 @@
-package com.possenti.alaska.userprofile;
+package com.possenti.alaska.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,27 +11,27 @@ import org.springframework.validation.Validator;
  * @since 2020-02-28
  */
 @Component
-public class UserProfileValidator implements Validator {
+public class UserValidator implements Validator {
 
     @Autowired
-    UserProfileRepository userProfileRepository;
+    UserRepository userRepository;
 
     @Override
     public boolean supports(final Class<?> clazz) {
-        return UserProfile.class.equals(clazz);
+        return User.class.equals(clazz);
     }
 
     @Override
     public void validate(final Object target, final Errors errors) {
         ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
-        UserProfile userProfile = (UserProfile) target;
+        User user = (User) target;
 
-        this.isDuplicated(userProfile, errors);
+        this.isDuplicated(user, errors);
 
     }
 
-    private void isDuplicated(final UserProfile userProfile, final Errors errors) {
-        final boolean duplicated = userProfileRepository.findAll().stream().anyMatch(item -> item.getName().equals(userProfile.getName()));
+    private void isDuplicated(final User user, final Errors errors) {
+        final boolean duplicated = userRepository.findAll().stream().anyMatch(item -> item.getName().equals(user.getName()));
         if (duplicated) {
             errors.rejectValue("name", "register.duplicated");
         }
