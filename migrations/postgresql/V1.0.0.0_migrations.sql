@@ -1,6 +1,6 @@
 CREATE TABLE goal
   (
-     id                              int,
+     id                              SERIAL,
      created_at                      date,
      updated_at                      date,
      name                            VARCHAR(80),
@@ -14,7 +14,7 @@ CREATE TABLE goal
 
 CREATE TABLE goal_type
   (
-     id                              int,
+     id                              SERIAL,
      created_at                      date,
      updated_at                      date,
      type                            VARCHAR(80),
@@ -24,7 +24,7 @@ CREATE TABLE goal_type
 
 CREATE TABLE "user"
   (
-     id                              int,
+     id                              SERIAL,
      created_at                      date,
      updated_at                      date,
      name                            VARCHAR(255),
