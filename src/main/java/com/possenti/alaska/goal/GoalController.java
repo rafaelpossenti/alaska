@@ -33,4 +33,9 @@ public class GoalController {
     public void insert(@RequestBody @Valid Goal goal) {
         this.service.save(goal);
     }
+
+    @GetMapping("/types/{id}")
+    ResponseEntity<List<Goal>> listByType(@PathVariable String id) {
+        return new ResponseEntity<>(service.listByType(Integer.valueOf(id)), HttpStatus.OK);
+    }
 }

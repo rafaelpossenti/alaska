@@ -1,4 +1,4 @@
-package com.possenti.alaska.userprofile;
+package com.possenti.alaska.user;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,26 +13,26 @@ import java.util.List;
  * @since 2020-02-25
  */
 @RestController
-@RequestMapping("/user-profiles")
-public class UserProfileController {
+@RequestMapping("/users")
+public class UserController {
 
     @Autowired
-    private UserProfileRepository repository;
+    private UserRepository repository;
 
     @Autowired
-    private UserProfileValidator validator;
+    private UserValidator validator;
 
     @GetMapping
-    List<UserProfile> list() {
+    List<User> list() {
         return repository.findAll();
     }
 
     @PostMapping
-    public void insert(@RequestBody @Valid UserProfile user) {
+    public void insert(@RequestBody @Valid User user) {
         this.repository.save(user);
     }
 
-    @InitBinder("userProfile")
+    @InitBinder("user")
     public void setupBinder(WebDataBinder binder) {
         binder.addValidators(validator);
     }

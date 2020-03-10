@@ -27,4 +27,7 @@ public class GoalService {
         repository.save(goal);
     }
 
+    public List<Goal> listByType(final Integer id) {
+        return repository.findByType(id);
+    }
 }

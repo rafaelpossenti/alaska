@@ -1,6 +1,7 @@
 package com.possenti.alaska.goal;
 
 import com.possenti.alaska.goaltype.GoalType;
+import com.possenti.alaska.user.User;
 import com.possenti.alaska.util.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /**
  * @author Rafael Possenti
@@ -40,14 +42,21 @@ public class Goal extends BaseEntity {
     @ManyToOne
     private GoalType type;
 
+    @JoinTable(
+        name = "goal_user",
+        joinColumns = @JoinColumn(name = "goal_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id")
+    )
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    private List<User> users;
 
     /**
-     * Method to handle records before insertions.
-     *
-     * Fields {@link Goal#status} always must be created by server before insert.
+     * @see BaseEntity#prePersist()
      */
     @PrePersist
+    @Override
     public void prePersist() {
+        super.prePersist();
         this.status = Status.PROGRESS;
     }
 
