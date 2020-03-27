@@ -1,8 +1,7 @@
 package com.possenti.alaska.user;
 
-import lombok.Getter;
-import lombok.Setter;
 import com.possenti.alaska.util.BaseEntity;
+import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -16,8 +15,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "`user`")
-@Getter
-@Setter
+@Data
 public class User extends BaseEntity {
 
     @NotNull

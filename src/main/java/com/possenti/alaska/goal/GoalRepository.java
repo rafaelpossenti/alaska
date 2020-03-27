@@ -3,7 +3,6 @@ package com.possenti.alaska.goal;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -19,4 +18,8 @@ public interface GoalRepository extends JpaRepository<Goal, Integer> {
 
     @Query(value = "select * from Goal g where g.type_id = ?1", nativeQuery = true)
     List<Goal> findByType(final Integer typeId);
+
+    @Query(value = "select * from Goal g where g.status <> 'CLOSED'", nativeQuery = true)
+    @Override
+    List<Goal> findAll();
 }
