@@ -1,9 +1,8 @@
 package com.possenti.alaska.goaltype;
 
 import com.possenti.alaska.util.BaseEntity;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import org.springframework.lang.NonNull;
+
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
@@ -14,8 +13,6 @@ import javax.validation.constraints.Size;
  * @since 2020-03-01
  */
 @Entity
-@Getter
-@Setter
 public class GoalType extends BaseEntity {
 
     @NotNull
@@ -25,5 +22,19 @@ public class GoalType extends BaseEntity {
     @Size(max = 255)
     private String description;
 
+    public String getType() {
+        return type;
+    }
 
+    public void setType(final String type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(final String description) {
+        this.description = description;
+    }
 }
